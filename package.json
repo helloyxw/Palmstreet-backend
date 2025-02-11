@@ -6,8 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build && node ./scripts/verify-build.js",
-    "postbuild": "echo '构建完成，输出文件清单：' && ls -la dist/",
+    "build": "nest build && test -f dist/main.js || (echo '构建失败：未生成main.js' && exit 1)",
+    "postbuild": "echo '构建产物清单：' && ls -la dist/",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
