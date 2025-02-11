@@ -8,7 +8,8 @@ async function bootstrap() {
   app.enableCors();
   await app.init();
   const expressApp = app.getHttpAdapter().getInstance();
-  return serverless(expressApp)
+  // 修复serverless调用问题，使用default属性
+  return serverless.default(expressApp);
 }
 // 导出handler函数供Vercel使用
 let handler: any;
